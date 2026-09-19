@@ -195,7 +195,7 @@ def back_matter(st, width, story):
     rows = [["CODE", "STATUS", "BEWERING", "BRONNEN"]]
     for code, status, claim, srcs, note in CLAIMS:
         rows.append([code, status, f"{claim}<br/><font size='6.6' color='#6e6965'>{note}</font>", srcs])
-    story.append(data_table(rows, [width * 0.07, width * 0.14, width * 0.62, width * 0.17], st))
+    story.append(data_table(rows, [width * 0.07, width * 0.17, width * 0.59, width * 0.17], st))
     story.append(PageBreak())
 
     story.append(Paragraph("REGISTER II", st["chapter_num"]))
@@ -340,9 +340,7 @@ def build_whitepaper():
     )
     story.append(Spacer(1, 16))
     for title, blocks in WP_SECTIONS:
-        head = Paragraph(title.upper(), st["h3"])
-        story.append(mark(head, title))
-        story.append(Paragraph(title, st["chapter_title"]))
+        story.append(mark(Paragraph(title, st["chapter_title"]), title))
         story.append(Rule(width, 0.8, WINE, 7))
         story.append(Spacer(1, 3))
         render_blocks(blocks, st, width, story)
